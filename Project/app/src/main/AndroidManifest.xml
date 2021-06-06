@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MarvelApp">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.DetailHeroActivity"></activity>
+        <activity android:name=".ui.EventsActivity" />
+        <activity android:name=".ListaPersonajesActivity" />
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
