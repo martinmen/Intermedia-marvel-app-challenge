@@ -1,4 +1,4 @@
-package ar.com.unlam.marvel_app.ui
+package ar.com.unlam.marvel_app.view.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

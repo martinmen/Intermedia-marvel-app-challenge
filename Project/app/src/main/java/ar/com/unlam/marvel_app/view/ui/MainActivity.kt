@@ -1,12 +1,12 @@
-package ar.com.unlam.marvel_app.ui
+package ar.com.unlam.marvel_app.view.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ar.com.unlam.marvel_app.R
-import ar.com.unlam.marvel_app.ui.adapters.ViewPagerAdapter
+import ar.com.unlam.marvel_app.view.ui.adapters.ViewPagerAdapter
 import ar.com.unlam.marvel_app.databinding.ActivityMainBinding
-import ar.com.unlam.marvel_app.ui.fragments.EventsFragment
-import ar.com.unlam.marvel_app.ui.fragments.HeroListFragmentRV
+import ar.com.unlam.marvel_app.view.ui.fragments.EventsFragment
+import ar.com.unlam.marvel_app.view.ui.fragments.HeroListFragmentRV
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpTabs() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
+
         adapter.addFragment(HeroListFragmentRV(),"Heroes")
         adapter.addFragment(EventsFragment(),"Events")
         binding.viewPager.adapter =adapter

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ar.com.unlam.marvel_app">
-
+<uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MarvelApp">
-        <activity android:name=".ui.DetailHeroActivity"></activity>
-        <activity android:name=".ui.EventsActivity" />
+        <activity android:name="ar.com.unlam.marvel_app.view.ui.DetailHeroActivity"></activity>
+        <activity android:name="ar.com.unlam.marvel_app.view.ui.EventsActivity" />
         <activity android:name=".ListaPersonajesActivity" />
-        <activity android:name=".ui.MainActivity">
+        <activity android:name="ar.com.unlam.marvel_app.view.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

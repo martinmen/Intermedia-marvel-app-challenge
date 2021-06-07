@@ -1,4 +1,4 @@
-package ar.com.unlam.marvel_app.ui.fragments
+package ar.com.unlam.marvel_app.view.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
