@@ -1,5 +1,6 @@
 package ar.com.unlam.marvel_app.view.ui.fragments
 
+import Results
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,21 +15,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.marvel_app.R
 import ar.com.unlam.marvel_app.view.ui.adapters.HeroRecyclerViewAdapter
-import ar.com.unlam.marvel_app.data.model.Hero
 import ar.com.unlam.marvel_app.view.ui.DetailHeroActivity
 import ar.com.unlam.marvel_app.view.ui.viewmodel.HerosViewModel
-import baseResponse
+import kotlinx.android.synthetic.main.hero_list_recycler_view.*
 
+class HeroListFragmentRV : Fragment(), HeroRecyclerViewAdapter.OnRecyclerItemClick {
+    private lateinit var recyclerAdapter: HeroRecyclerViewAdapter
 
-class HeroListFragmentRV : Fragment(),HeroRecyclerViewAdapter.OnRecyclerItemClick {
-    val heroList :ArrayList<baseResponse> = ArrayList()
-
-    private lateinit var recyclerAdapter : HeroRecyclerViewAdapter
-   // private val viewModel: HerosViewModel by ViewModelProvid
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val view =  inflater.inflate(R.layout.hero_list_recycler_view, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.hero_list_recycler_view, container, false)
 
         initViewModel(view)
         initViewModel()
@@ -36,38 +34,47 @@ class HeroListFragmentRV : Fragment(),HeroRecyclerViewAdapter.OnRecyclerItemClic
     }
 
     private fun initViewModel(view: View) {
-        //
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        val decortion  = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
-        recyclerView.addItemDecoration(decortion)
-        recyclerAdapter = HeroRecyclerViewAdapter(this)
-       //recyclerAdapter.setUpdatedData(viewModel._charactersListLiveData)
-       // recyclerAdapter.submitList(viewModel._charactersListLiveData)
-        recyclerView.adapter = recyclerAdapter
+        // val decortion = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
+        //recyclerView.addItemDecoration(decortion)
+        // recyclerAdapter = HeroRecyclerViewAdapter(this)
+        // recyclerView.adapter = recyclerAdapter
+
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(this@HeroListFragmentRV.context)
+            val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            addItemDecoration(decoration)
+            recyclerAdapter = HeroRecyclerViewAdapter(this@HeroListFragmentRV)
+            adapter = recyclerAdapter
+        }
     }
 
-    private fun initViewModel() {
-        val viewModel  = ViewModelProvider(this).get(HerosViewModel::class.java)
-        viewModel.getRecyclerListObserver().observe(viewLifecycleOwner, Observer<List<baseResponse>> {
-            if(it != null) {
+    fun initViewModel() {
+        val viewModel = ViewModelProvider(this).get(HerosViewModel::class.java)
+        viewModel.getRecyclerListObserver().observe(viewLifecycleOwner, Observer<List<Results>> {
+            if (it != null) {
                 recyclerAdapter.setUpdatedData(it)
+                recyclerAdapter.submitList(it)
+                recyclerAdapter.notifyDataSetChanged()
             } else {
                 Toast.makeText(activity, "Error in getting data", Toast.LENGTH_SHORT).show()
             }
         })
         viewModel.getHerores()
     }
-    companion object {
 
+    companion object {
         @JvmStatic
         fun newInstance() =
-                HeroListFragmentRV()
+            HeroListFragmentRV()
     }
 
-    override fun onItemClickListener(data: baseResponse) {
+    override fun onItemClickListener(data: Results) {
         val intent = Intent(this@HeroListFragmentRV.context, DetailHeroActivity::class.java)
-        intent.putExtra("loc_data", data.data.results[0].id)
+        intent.putExtra("loc_data", data.id)
+        startActivity(intent)
+    }
 
-        startActivity(intent)    }
+
 }

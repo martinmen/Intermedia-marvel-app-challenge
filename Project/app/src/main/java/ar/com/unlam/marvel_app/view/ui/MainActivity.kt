@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
     private fun setUpTabs() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
 
-        adapter.addFragment(HeroListFragmentRV(),"Heroes")
-        adapter.addFragment(EventsFragment(),"Events")
-        binding.viewPager.adapter =adapter
+        adapter.addFragment(HeroListFragmentRV(), "Heroes")
+        adapter.addFragment(EventsFragment(), "Events")
+        binding.viewPager.adapter = adapter
         binding.tabs.setupWithViewPager(binding.viewPager)
         binding.tabs.getTabAt(0)!!.setIcon(R.drawable.ic_superhero)
         binding.tabs.getTabAt(1)!!.setIcon(R.drawable.ic_calendar)

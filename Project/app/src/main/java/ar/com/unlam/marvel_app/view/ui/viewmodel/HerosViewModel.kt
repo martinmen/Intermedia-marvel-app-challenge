@@ -1,18 +1,18 @@
 package ar.com.unlam.marvel_app.view.ui.viewmodel
 
+import Results
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ar.com.unlam.marvel_app.data.model.Hero
 import ar.com.unlam.marvel_app.data.model.network.MarvelServiceImpl
-import baseResponse
-import kotlinx.coroutines.Dispatchers
+import BaseMarvelResponse
 import kotlinx.coroutines.launch
 
-//class HerosViewModel(private val charactersRepository: HeroRepostitoryImpl) : ViewModel()  {
 class HerosViewModel:ViewModel(){
-    var _charactersListLiveData = MutableLiveData<List<baseResponse>>()
-    val characters = MutableLiveData<baseResponse>()
+    var _charactersListLiveData = MutableLiveData<List<BaseMarvelResponse>>()
+    val characters = MutableLiveData<BaseMarvelResponse>()
+    val listaPersonajes = MutableLiveData<List<Results>>()
     val status = MutableLiveData<Status>()
 
     enum class Status {
@@ -21,22 +21,18 @@ class HerosViewModel:ViewModel(){
     }
 
     init {
-        _charactersListLiveData = MutableLiveData()
     }
 
-
-    fun getRecyclerListObserver(): MutableLiveData<List<baseResponse>>{
-        return _charactersListLiveData
+    fun getRecyclerListObserver(): MutableLiveData<List<Results>>{
+        return listaPersonajes
     }
-   // private val _characters = MutableLiveData<List<Hero>>()
-    //val characters: LiveData<List<Hero>> get() = _characters
 
     fun getHerores() {
         viewModelScope.launch {
             try {
-                val Servicio = MarvelServiceImpl()
-
-                _charactersListLiveData.value =  Servicio.getHeroes()
+                val servicio = MarvelServiceImpl()
+                listaPersonajes.value =  servicio.getHeroes().data.results
+                Log.d(" characters.value", listaPersonajes.value.toString())
               //  _charactersListLiveData.value = charactersRepository.getHeroes(1,15)
                 status.value = Status.SUCCES
             } catch (e: Exception) {

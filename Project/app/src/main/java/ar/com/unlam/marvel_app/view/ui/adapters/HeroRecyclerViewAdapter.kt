@@ -1,52 +1,55 @@
 package ar.com.unlam.marvel_app.view.ui.adapters
 
+import Results
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.MutableLiveData
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.marvel_app.R
-import ar.com.unlam.marvel_app.data.model.Hero
-import baseResponse
 import com.squareup.picasso.Picasso
 
-class HeroRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) : RecyclerView.Adapter<HeroRecyclerViewAdapter.MyViewHolder>(){
+class HeroRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
+    RecyclerView.Adapter<HeroRecyclerViewAdapter.MyViewHolder>() {
 
-    //var items = ArrayList<Hero>()
-    private val items = mutableListOf<baseResponse>()
+    private val items = mutableListOf<Results>()
 
-   // fun setUpdatedData(items : ArrayList<Hero>) {
-   fun setUpdatedData(itemsIn : List<baseResponse>) {
-       items.addAll(itemsIn)
+    fun setUpdatedData(itemsIn: List<Results>) {
+        items.addAll(itemsIn)
         notifyDataSetChanged()
     }
-    class MyViewHolder(view: View,val clickListener: OnRecyclerItemClick): RecyclerView.ViewHolder(view) {
-        val imageThumb2 = view.findViewById<ImageView>(R.id.imageThumb)
-        val tvTitle = view.findViewById<TextView>(R.id.tvTitle)
-        val tvDesc = view.findViewById<TextView>(R.id.tvDesc)
-        val recyclerViewAdapter  = HeroRecyclerViewAdapter(clickListener)
 
-        fun bind(data : baseResponse) {
-            tvTitle.text = data.data.results[0].name
-            tvDesc.text = data.data.results[0].description
-
-            val url  = data.data.results[0].thumbnail.toString()
-
-                Picasso.get()
-                    .load(url)
-                    .into(imageThumb2)
-        }
-    }
-    fun submitList(it: List<baseResponse>) {
+    fun submitList(it: List<Results>) {
         items.clear()
         items.addAll(it)
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.hero_list_recycler_view_row, parent, false)
 
-        return MyViewHolder(view,clickListener)
+    class MyViewHolder(view: View,  var clickListener: OnRecyclerItemClick) :
+        RecyclerView.ViewHolder(view) {
+        val imageThumb = view.findViewById<ImageView>(R.id.imageThumb)
+        val name = view.findViewById<TextView>(R.id.heroName)
+        val description = view.findViewById<TextView>(R.id.heroDesc)
+       val recyclerViewAdapter = HeroRecyclerViewAdapter(clickListener)
+
+        fun bind(data: Results) {
+            name.text = data.name
+            description.text = data.description
+
+            Picasso.get()
+                .load("https://http2.mlstatic.com/D_852497-MLA32566609369_102019-I.jpg")//(data.thumbnail.path.replace("http","https"))
+                .into(imageThumb)
+          //  recyclerViewAdapter.items = data
+
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.hero_list_recycler_view_row, parent, false)
+        return MyViewHolder(view, clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -54,13 +57,13 @@ class HeroRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) : Recycler
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-      holder.bind(items.get(position))
-        holder.itemView.setOnClickListener{
-            clickListener.onItemClickListener(items.get(position))//(items.get(position))
+        holder.bind(items[position])
+        holder.itemView.setOnClickListener {
+            clickListener.onItemClickListener(items[position])//(items.get(position))
         }
     }
 
-    interface  OnRecyclerItemClick {
-        fun onItemClickListener(data: baseResponse)
+    interface OnRecyclerItemClick {
+        fun onItemClickListener(data: Results)
     }
 }

@@ -1,6 +1,7 @@
 package ar.com.unlam.marvel_app.retrofit.repositories
 
 import android.provider.Settings.Global.getString
+import ar.com.unlam.marvel_app.data.model.network.MarvelService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.MessageDigest
@@ -16,6 +17,16 @@ object UtilsApiMarvel {
             .baseUrl(BASE_API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
+    }
+
+    fun getRetro(): MarvelService {
+        val service: MarvelService = Retrofit.Builder()
+            .baseUrl("https://apis.datos.gob.ar")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(MarvelService::class.java)
+        return service
     }
 
     val authParams = AuthParams(PUBLIC_API_KEY, 1, generateHash())

@@ -9,7 +9,4 @@ class DetailHeroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_hero)
     }
-
-
-
 }
