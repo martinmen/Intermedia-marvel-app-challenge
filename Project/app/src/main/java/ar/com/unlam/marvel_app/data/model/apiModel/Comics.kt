@@ -1,4 +1,4 @@
-
+import java.io.Serializable
 
 
 data class Comics (
@@ -7,4 +7,4 @@ data class Comics (
 	val collectionURI : String,
 	val items : List<Items>,
 	val returned : Int
-)
+):Serializable

@@ -37,9 +37,8 @@ class HeroRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
         fun bind(data: Results) {
             name.text = data.name
             description.text = data.description
-
             Picasso.get()
-                .load("https://http2.mlstatic.com/D_852497-MLA32566609369_102019-I.jpg")//(data.thumbnail.path.replace("http","https"))
+                .load("https://media.gq.com.mx/photos/5dec0db85b7e8300097bca15/16:9/w_1920,c_limit/thanos-bebe-marvel.jpg")//(data.thumbnail.path.replace("http","https"))
                 .into(imageThumb)
           //  recyclerViewAdapter.items = data
 

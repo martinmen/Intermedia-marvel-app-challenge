@@ -72,7 +72,9 @@ class HeroListFragmentRV : Fragment(), HeroRecyclerViewAdapter.OnRecyclerItemCli
 
     override fun onItemClickListener(data: Results) {
         val intent = Intent(this@HeroListFragmentRV.context, DetailHeroActivity::class.java)
-        intent.putExtra("loc_data", data.id)
+        intent.putExtra("name", data.name)
+        intent.putExtra("description", data.description)
+        intent.putExtra("comics", data.comics)
         startActivity(intent)
     }
 
