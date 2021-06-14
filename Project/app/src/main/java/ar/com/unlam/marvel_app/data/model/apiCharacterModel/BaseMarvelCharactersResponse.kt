@@ -1,6 +1,6 @@
 
 
-data class BaseMarvelResponse (
+data class BaseMarvelCharactersResponse (
 
 	val code : Int,
 	val status : String,
@@ -8,5 +8,5 @@ data class BaseMarvelResponse (
 	val attributionText : String,
 	val attributionHTML : String,
 	val etag : String,
-	val data : Data
+	val data : DataCharacters
 )

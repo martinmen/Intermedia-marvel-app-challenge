@@ -1,9 +1,9 @@
 
-data class Data (
+data class DataCharacters (
 
 	val offset : Int,
 	val limit : Int,
 	val total : Int,
 	val count : Int,
-	val results : List<Results>
+	val results : List<ResultsCharacters>
 )

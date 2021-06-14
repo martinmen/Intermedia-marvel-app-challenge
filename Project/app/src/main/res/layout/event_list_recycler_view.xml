@@ -6,11 +6,11 @@
     tools:context=".view.ui.fragments.CharactersFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewEvents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/event_list_recycler_view"
-
-        />
+        tools:listitem="@layout/event_list_recycler_view_row"
+        
+      />
 
 </FrameLayout>

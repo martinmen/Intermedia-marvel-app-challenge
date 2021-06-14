@@ -1,18 +1,18 @@
 package ar.com.unlam.marvel_app.view.ui.viewmodel
 
-import Results
+import ResultsCharacters
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ar.com.unlam.marvel_app.data.model.network.MarvelServiceImpl
-import BaseMarvelResponse
+import BaseMarvelCharactersResponse
 import kotlinx.coroutines.launch
 
 class CharacterViewModel:ViewModel(){
-    var _charactersListLiveData = MutableLiveData<List<BaseMarvelResponse>>()
-    val characters = MutableLiveData<BaseMarvelResponse>()
-    val listaPersonajes = MutableLiveData<List<Results>>()
+    var _charactersListLiveData = MutableLiveData<List<BaseMarvelCharactersResponse>>()
+    val characters = MutableLiveData<BaseMarvelCharactersResponse>()
+    val listaPersonajes = MutableLiveData<List<ResultsCharacters>>()
     val status = MutableLiveData<Status>()
 
     enum class Status {
@@ -23,7 +23,7 @@ class CharacterViewModel:ViewModel(){
     init {
     }
 
-    fun getRecyclerListObserver(): MutableLiveData<List<Results>>{
+    fun getRecyclerListObserver(): MutableLiveData<List<ResultsCharacters>>{
         return listaPersonajes
     }
 

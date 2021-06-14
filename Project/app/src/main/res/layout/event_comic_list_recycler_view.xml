@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.fragments.CharactersFragment">
+    tools:context=".view.ui.DetailCharacterActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/event_list_recycler_view"
-
-        />
+        tools:listitem="@layout/event_comic_list_recycler_view_row"
+      />
 
 </FrameLayout>

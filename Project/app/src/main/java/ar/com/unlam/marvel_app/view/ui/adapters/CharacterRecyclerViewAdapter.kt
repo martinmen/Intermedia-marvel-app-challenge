@@ -1,6 +1,6 @@
 package ar.com.unlam.marvel_app.view.ui.adapters
 
-import Results
+import ResultsCharacters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +13,14 @@ import com.squareup.picasso.Picasso
 class CharacterRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
     RecyclerView.Adapter<CharacterRecyclerViewAdapter.MyViewHolder>() {
 
-    private val items = mutableListOf<Results>()
+    private val items = mutableListOf<ResultsCharacters>()
 
-    fun setUpdatedData(itemsIn: List<Results>) {
+    fun setUpdatedData(itemsIn: List<ResultsCharacters>) {
         items.addAll(itemsIn)
         notifyDataSetChanged()
     }
 
-    fun submitList(it: List<Results>) {
+    fun submitList(it: List<ResultsCharacters>) {
         items.clear()
         items.addAll(it)
     }
@@ -32,7 +32,7 @@ class CharacterRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
         val description = view.findViewById<TextView>(R.id.heroDesc)
         val recyclerViewAdapter = CharacterRecyclerViewAdapter(clickListener)
 
-        fun bind(data: Results) {
+        fun bind(data: ResultsCharacters) {
             name.text = data.name
             description.text = data.description
             var url = data.thumbnail.path.replace("http","https")+"/portrait_uncanny.jpg"
@@ -65,6 +65,6 @@ class CharacterRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
     }
 
     interface OnRecyclerItemClick {
-        fun onItemClickListener(data: Results)
+        fun onItemClickListener(data: ResultsCharacters)
     }
 }

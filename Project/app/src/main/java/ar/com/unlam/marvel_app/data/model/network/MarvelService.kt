@@ -1,6 +1,7 @@
 package ar.com.unlam.marvel_app.data.model.network
 
-import BaseMarvelResponse
+import BaseMarvelCharactersResponse
+import BaseMarvelEventsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -11,7 +12,7 @@ interface MarvelService {
         @Query("apikey") apikey: String,
         @Query("hash") hash: String,
         @Query("ts") ts: String
-    ): Response<BaseMarvelResponse>
+    ): Response<BaseMarvelCharactersResponse>
 
 
     @GET("events")
@@ -19,5 +20,5 @@ interface MarvelService {
         @Query("apikey") apikey: String,
         @Query("hash") hash: String,
         @Query("ts") ts: String
-    ): Response<BaseMarvelResponse>
+    ): Response<BaseMarvelEventsResponse>
 }

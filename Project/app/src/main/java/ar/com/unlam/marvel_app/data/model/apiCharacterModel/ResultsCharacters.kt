@@ -1,6 +1,6 @@
 
 
-data class Results (
+data class ResultsCharacters (
 
 	val id : Int,
 	val name : String,

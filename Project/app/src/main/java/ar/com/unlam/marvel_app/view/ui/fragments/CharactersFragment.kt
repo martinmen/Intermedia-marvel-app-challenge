@@ -1,6 +1,6 @@
 package ar.com.unlam.marvel_app.view.ui.fragments
 
-import Results
+import ResultsCharacters
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -34,7 +34,7 @@ class CharactersFragment : Fragment(), CharacterRecyclerViewAdapter.OnRecyclerIt
     }
 
     private fun initViewModel(view: View) {
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewCharacters)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         // val decortion = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
         //recyclerView.addItemDecoration(decortion)
@@ -52,7 +52,7 @@ class CharactersFragment : Fragment(), CharacterRecyclerViewAdapter.OnRecyclerIt
 
     fun initViewModel() {
         val viewModel = ViewModelProvider(this).get(CharacterViewModel::class.java)
-        viewModel.getRecyclerListObserver().observe(viewLifecycleOwner, Observer<List<Results>> {
+        viewModel.getRecyclerListObserver().observe(viewLifecycleOwner, Observer<List<ResultsCharacters>> {
             if (it != null) {
                 recyclerAdapter.setUpdatedData(it)
                 recyclerAdapter.submitList(it)
@@ -70,7 +70,7 @@ class CharactersFragment : Fragment(), CharacterRecyclerViewAdapter.OnRecyclerIt
             CharactersFragment()
     }
 
-    override fun onItemClickListener(data: Results) {
+    override fun onItemClickListener(data: ResultsCharacters) {
         val intent = Intent(this@CharactersFragment.context, DetailCharacterActivity::class.java)
         intent.putExtra("name", data.name)
         intent.putExtra("description", data.description)

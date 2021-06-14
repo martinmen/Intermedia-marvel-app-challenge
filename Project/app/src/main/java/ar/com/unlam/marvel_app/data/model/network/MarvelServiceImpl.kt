@@ -2,7 +2,8 @@ package ar.com.unlam.marvel_app.data.model.network
 
 import android.util.Log
 import ar.com.unlam.marvel_app.retrofit.repositories.UtilsApiMarvel
-import BaseMarvelResponse
+import BaseMarvelCharactersResponse
+import BaseMarvelEventsResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.math.BigInteger
@@ -26,7 +27,7 @@ class MarvelServiceImpl {
         .digest(("1${UtilsApiMarvel.PRIVATE_API_KEY}${UtilsApiMarvel.PUBLIC_API_KEY}").toByteArray())
         .joinToString("") { "%02x".format(it) }
 
-    suspend fun getHeroes(): BaseMarvelResponse {
+    suspend fun getHeroes(): BaseMarvelCharactersResponse {
         return withContext(Dispatchers.IO) {
             val response = retrofit.create(MarvelService::class.java).getAllCharacters(
                 authParams.apiKey,
@@ -34,7 +35,20 @@ class MarvelServiceImpl {
                 authParams.ts.toString()
             )//,offset,limit
             Log.d("response", response.toString())
-            (response.body()) as BaseMarvelResponse
+            (response.body()) as BaseMarvelCharactersResponse
+        }
+    }
+
+
+    suspend fun getEvents(): BaseMarvelEventsResponse {
+        return withContext(Dispatchers.IO) {
+            val response = retrofit.create(MarvelService::class.java).getAllEvents(
+                authParams.apiKey,
+                authParams.hash,
+                authParams.ts.toString()
+            )//,offset,limit
+            Log.d("response", response.toString())
+            (response.body()) as BaseMarvelEventsResponse
         }
     }
 

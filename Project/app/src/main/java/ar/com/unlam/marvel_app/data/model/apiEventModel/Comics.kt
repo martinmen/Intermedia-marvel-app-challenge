@@ -1,6 +1,7 @@
 import java.io.Serializable
 
 
+
 data class Comics (
 
 	val available : Int,
