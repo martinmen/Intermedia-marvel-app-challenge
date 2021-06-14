@@ -44,7 +44,7 @@
                 android:id="@+id/imageViewHeroDetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/empty_image" />
+                app:srcCompat="@drawable/empty_imagenew" />
 
 
             <TextView

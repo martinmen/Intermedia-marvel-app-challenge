@@ -7,7 +7,15 @@ import retrofit2.http.Query
 
 interface MarvelService {
     @GET("characters")
-    suspend fun getAllHeroes(
+    suspend fun getAllCharacters(
+        @Query("apikey") apikey: String,
+        @Query("hash") hash: String,
+        @Query("ts") ts: String
+    ): Response<BaseMarvelResponse>
+
+
+    @GET("events")
+    suspend fun getAllEvents(
         @Query("apikey") apikey: String,
         @Query("hash") hash: String,
         @Query("ts") ts: String

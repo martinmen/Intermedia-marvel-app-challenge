@@ -28,7 +28,7 @@ class MarvelServiceImpl {
 
     suspend fun getHeroes(): BaseMarvelResponse {
         return withContext(Dispatchers.IO) {
-            val response = retrofit.create(MarvelService::class.java).getAllHeroes(
+            val response = retrofit.create(MarvelService::class.java).getAllCharacters(
                 authParams.apiKey,
                 authParams.hash,
                 authParams.ts.toString()

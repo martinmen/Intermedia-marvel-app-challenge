@@ -35,8 +35,12 @@ class CharacterRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
         fun bind(data: Results) {
             name.text = data.name
             description.text = data.description
+            var url = data.thumbnail.path.replace("http","https")+"/portrait_uncanny.jpg"
             Picasso.get()
-                .load("https://media.gq.com.mx/photos/5dec0db85b7e8300097bca15/16:9/w_1920,c_limit/thanos-bebe-marvel.jpg")//(data.thumbnail.path.replace("http","https"))
+                //.load("https://media.gq.com.mx/photos/5dec0db85b7e8300097bca15/16:9/w_1920,c_limit/thanos-bebe-marvel.jpg")
+              //  .load(data.urls[0].url.replace("http","https"))////
+                .load(url)
+                .error(R.drawable.empty_imagenew)
                 .into(imageThumb)
           //  recyclerViewAdapter.items = data
 
