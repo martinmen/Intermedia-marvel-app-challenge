@@ -9,7 +9,7 @@ import ar.com.unlam.marvel_app.data.model.network.MarvelServiceImpl
 import BaseMarvelResponse
 import kotlinx.coroutines.launch
 
-class HerosViewModel:ViewModel(){
+class CharacterViewModel:ViewModel(){
     var _charactersListLiveData = MutableLiveData<List<BaseMarvelResponse>>()
     val characters = MutableLiveData<BaseMarvelResponse>()
     val listaPersonajes = MutableLiveData<List<Results>>()

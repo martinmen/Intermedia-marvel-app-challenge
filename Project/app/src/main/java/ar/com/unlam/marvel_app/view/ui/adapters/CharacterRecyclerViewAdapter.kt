@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.marvel_app.R
 import com.squareup.picasso.Picasso
 
-class HeroRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
-    RecyclerView.Adapter<HeroRecyclerViewAdapter.MyViewHolder>() {
+class CharacterRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
+    RecyclerView.Adapter<CharacterRecyclerViewAdapter.MyViewHolder>() {
 
     private val items = mutableListOf<Results>()
 
@@ -32,7 +30,7 @@ class HeroRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
         val imageThumb = view.findViewById<ImageView>(R.id.imageThumb)
         val name = view.findViewById<TextView>(R.id.heroName)
         val description = view.findViewById<TextView>(R.id.heroDesc)
-       val recyclerViewAdapter = HeroRecyclerViewAdapter(clickListener)
+        val recyclerViewAdapter = CharacterRecyclerViewAdapter(clickListener)
 
         fun bind(data: Results) {
             name.text = data.name
@@ -47,7 +45,7 @@ class HeroRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.hero_list_recycler_view_row, parent, false)
+            .inflate(R.layout.character_list_recycler_view_row, parent, false)
         return MyViewHolder(view, clickListener)
     }
 

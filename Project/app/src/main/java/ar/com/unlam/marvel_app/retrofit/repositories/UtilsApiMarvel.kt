@@ -20,14 +20,14 @@ object UtilsApiMarvel {
 
     }
 
-    fun getRetro(): MarvelService {
+/*    fun getRetro(): MarvelService {
         val service: MarvelService = Retrofit.Builder()
             .baseUrl("https://apis.datos.gob.ar")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(MarvelService::class.java)
         return service
-    }
+    }*/
 
     val authParams = AuthParams(PUBLIC_API_KEY, 1, generateHash())
 

@@ -4,40 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.MainActivity">
+    tools:context=".view.ui.LoginActivity"
+    android:id="@+id/loginLayout">
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="wrap_content"
+        android:id="@+id/et_TextEmailAddress"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="68dp"
         android:ems="10"
+        android:hint="@string/emailInputHint"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/emailInputHint"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="wrap_content"
+        android:id="@+id/et_TextPassword"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/et_TextEmailAddress"
         android:hint="@string/passwordInputHint"/>
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_width="179dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="24dp"
         android:text="@string/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/et_TextPassword" />
+
+    <Button
+        android:id="@+id/buttonRegistrar"
+        android:layout_width="179dp"
+        android:layout_height="46dp"
+        android:text="@string/registrar"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonLogin"
+        app:layout_constraintEnd_toStartOf="@+id/buttonLogin"
+        app:layout_constraintHorizontal_bias="0.429"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonLogin"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonRegistrarFacebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#3B5998"
+        android:drawableStart="@drawable/ic_baseline_facebook_24"
+        android:text="Registrar con facebook"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+        app:layout_constraintVertical_bias="0.023" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

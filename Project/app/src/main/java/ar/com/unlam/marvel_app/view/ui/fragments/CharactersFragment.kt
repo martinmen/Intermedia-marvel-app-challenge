@@ -14,19 +14,19 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.marvel_app.R
-import ar.com.unlam.marvel_app.view.ui.adapters.HeroRecyclerViewAdapter
-import ar.com.unlam.marvel_app.view.ui.DetailHeroActivity
-import ar.com.unlam.marvel_app.view.ui.viewmodel.HerosViewModel
-import kotlinx.android.synthetic.main.hero_list_recycler_view.*
+import ar.com.unlam.marvel_app.view.ui.adapters.CharacterRecyclerViewAdapter
+import ar.com.unlam.marvel_app.view.ui.DetailCharacterActivity
+import ar.com.unlam.marvel_app.view.ui.viewmodel.CharacterViewModel
+import kotlinx.android.synthetic.main.character_list_recycler_view.*
 
-class HeroListFragmentRV : Fragment(), HeroRecyclerViewAdapter.OnRecyclerItemClick {
-    private lateinit var recyclerAdapter: HeroRecyclerViewAdapter
+class CharactersFragment : Fragment(), CharacterRecyclerViewAdapter.OnRecyclerItemClick {
+    private lateinit var recyclerAdapter: CharacterRecyclerViewAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.hero_list_recycler_view, container, false)
+        val view = inflater.inflate(R.layout.character_list_recycler_view, container, false)
 
         initViewModel(view)
         initViewModel()
@@ -42,16 +42,16 @@ class HeroListFragmentRV : Fragment(), HeroRecyclerViewAdapter.OnRecyclerItemCli
         // recyclerView.adapter = recyclerAdapter
 
         recyclerView.apply {
-            layoutManager = LinearLayoutManager(this@HeroListFragmentRV.context)
+            layoutManager = LinearLayoutManager(this@CharactersFragment.context)
             val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
             addItemDecoration(decoration)
-            recyclerAdapter = HeroRecyclerViewAdapter(this@HeroListFragmentRV)
+            recyclerAdapter = CharacterRecyclerViewAdapter(this@CharactersFragment)
             adapter = recyclerAdapter
         }
     }
 
     fun initViewModel() {
-        val viewModel = ViewModelProvider(this).get(HerosViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(CharacterViewModel::class.java)
         viewModel.getRecyclerListObserver().observe(viewLifecycleOwner, Observer<List<Results>> {
             if (it != null) {
                 recyclerAdapter.setUpdatedData(it)
@@ -67,11 +67,11 @@ class HeroListFragmentRV : Fragment(), HeroRecyclerViewAdapter.OnRecyclerItemCli
     companion object {
         @JvmStatic
         fun newInstance() =
-            HeroListFragmentRV()
+            CharactersFragment()
     }
 
     override fun onItemClickListener(data: Results) {
-        val intent = Intent(this@HeroListFragmentRV.context, DetailHeroActivity::class.java)
+        val intent = Intent(this@CharactersFragment.context, DetailCharacterActivity::class.java)
         intent.putExtra("name", data.name)
         intent.putExtra("description", data.description)
         intent.putExtra("comics", data.comics)

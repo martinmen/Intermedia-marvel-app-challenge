@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_hero.*
 import kotlinx.android.synthetic.main.activity_detail_hero.view.*
 
-class DetailHeroActivity : AppCompatActivity() {
+class DetailCharacterActivity : AppCompatActivity() {
     private var adapter = ComicsDetailsCharacterAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ R.id.close_detail -> finish()
 }*/
         val comics = intent.getSerializableExtra("comics") as Comics
         val name = intent.getStringExtra("name")
-        val description = intent.getStringExtra("description")
+ //       val description = intent.getStringExtra("description")
 /*        if (name != null) {
             if (name.isNotEmpty())
                 navigationDetailMenu.get(R.id.navigationDetailMenu).textViewAppearTittle.text  = name.toString()
@@ -35,7 +35,6 @@ R.id.close_detail -> finish()
         character_name_detail.text = name
 val image = "https://media.gq.com.mx/photos/5dec0db85b7e8300097bca15/16:9/w_1920,c_limit/thanos-bebe-marvel.jpg"
         setEvents(comics.items as ArrayList<Items>)
-        textViewHeroDescription.text = description
         events_hero_list_rv.layoutManager = LinearLayoutManager(this)
         events_hero_list_rv.adapter=adapter
         Picasso.get()

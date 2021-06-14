@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.DetailHeroActivity"
+    tools:context=".view.ui.DetailCharacterActivity"
     android:orientation="vertical">
 
 <!--    <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -71,7 +71,7 @@
                 android:layout_height="400dp"
                 android:layout_marginTop="20dp"
                 tools:itemCount="4"
-                tools:listitem="@layout/hero_list_appear_recycler_view_row" />
+                tools:listitem="@layout/character_list_appear_recycler_view_row" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
