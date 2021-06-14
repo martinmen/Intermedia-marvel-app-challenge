@@ -26,20 +26,25 @@ R.id.close_detail -> finish()
 }*/
         val comics = intent.getSerializableExtra("comics") as Comics
         val name = intent.getStringExtra("name")
- //       val description = intent.getStringExtra("description")
+        val extension = intent.getStringExtra("extension")
+        val image = intent.getStringExtra("image")
+       val description = intent.getStringExtra("description")
 /*        if (name != null) {
             if (name.isNotEmpty())
                 navigationDetailMenu.get(R.id.navigationDetailMenu).textViewAppearTittle.text  = name.toString()
         }*/
 
         character_name_detail.text = name
-val image = "https://media.gq.com.mx/photos/5dec0db85b7e8300097bca15/16:9/w_1920,c_limit/thanos-bebe-marvel.jpg"
+        tv_HeroDescriptionDetails.text=description
+        var url = image.toString().replace("http","https")+"/portrait_uncanny."+extension
+
+        Picasso.get()
+            .load(url)
+            .error(R.drawable.empty_imagenew)
+            .into(imageViewHeroDetail)
         setEvents(comics.items as ArrayList<Items>)
         events_hero_list_rv.layoutManager = LinearLayoutManager(this)
         events_hero_list_rv.adapter=adapter
-        Picasso.get()
-            .load(image)
-            .into(imageViewHeroDetail)
     }
 
 

@@ -74,6 +74,8 @@ class CharactersFragment : Fragment(), CharacterRecyclerViewAdapter.OnRecyclerIt
         val intent = Intent(this@CharactersFragment.context, DetailCharacterActivity::class.java)
         intent.putExtra("name", data.name)
         intent.putExtra("description", data.description)
+        intent.putExtra("image", data.thumbnail.path)
+        intent.putExtra("extension", data.thumbnail.extension)
         intent.putExtra("comics", data.comics)
         startActivity(intent)
     }

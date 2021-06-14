@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.marvel_app.R
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.character_list_appear_recycler_view_row.view.*
 
 class ComicsDetailsCharacterAdapter : RecyclerView.Adapter<ComicsDetailsCharacterAdapter.ViewHolder>()
@@ -25,6 +26,7 @@ class ComicsDetailsCharacterAdapter : RecyclerView.Adapter<ComicsDetailsCharacte
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         comicsList[position].let { article ->
             holder.itemView.tv_event_name.text = comicsList[position].name
+
         }
     }
 
