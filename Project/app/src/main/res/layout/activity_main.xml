@@ -10,7 +10,10 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        android:layout_above="@+id/Appbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/Appbar"
@@ -24,6 +27,6 @@
             android:layout_height="50dp"
             app:tabBackground="@color/cardview_dark_background"
             app:tabMode="fixed"
-            app:tabTextAppearance="@style/CustomTabStyle"/>
+            app:tabTextAppearance="@style/CustomTabStyle" />
     </com.google.android.material.appbar.AppBarLayout>
     </RelativeLayout>

@@ -51,10 +51,6 @@ class EventsFragment : Fragment()  , EventRecyclerViewAdapter.OnRecyclerItemClic
     private fun initViewModel(view: View) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewEvents)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        // val decortion = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
-        //recyclerView.addItemDecoration(decortion)
-        // recyclerAdapter = HeroRecyclerViewAdapter(this)
-        // recyclerView.adapter = recyclerAdapter
 
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@EventsFragment.context)
@@ -69,8 +65,8 @@ class EventsFragment : Fragment()  , EventRecyclerViewAdapter.OnRecyclerItemClic
         val viewModel = ViewModelProvider(this).get(EventViewModels::class.java)
         viewModel.getRecyclerListObserver().observe(viewLifecycleOwner, Observer<List<ResultsEvent>> {
             if (it != null) {
-                recyclerAdapter.setUpdatedData(it)
-                recyclerAdapter.submitList(it)
+                recyclerAdapter.items = it.toMutableList()
+                recyclerAdapter.items2= it[0].comics.items.toMutableList()
                 recyclerAdapter.notifyDataSetChanged()
             } else {
                 Toast.makeText(activity, "Error in getting data", Toast.LENGTH_SHORT).show()
