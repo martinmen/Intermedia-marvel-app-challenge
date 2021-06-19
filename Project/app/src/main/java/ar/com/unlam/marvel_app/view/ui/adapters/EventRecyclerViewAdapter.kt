@@ -23,44 +23,45 @@ class EventRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
     var items = mutableListOf<ResultsEvent>()
     var items2 = mutableListOf<Items>()
 
-    class MyViewHolder(
-        view: View,
-        view2: View,
-        view3: View,
-        var clickListener: OnRecyclerItemClick
-    ) :
-        RecyclerView.ViewHolder(view) {
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.bind(items[position])/*, items2[position]*/
+        holder.itemView.expandBtn.setOnClickListener {
+            clickListener.onItemClickListener(items[position])//(items.get(position))
+        }
+    }
+    class MyViewHolder(view: View,view2: View,view3: View,var clickListener: OnRecyclerItemClick):RecyclerView.ViewHolder(view) {
         val imageEventThumb = view.findViewById<ImageView>(R.id.imageEventThumb)
         val title = view.findViewById<TextView>(R.id.tvEventTitle)
         val eventDesc = view.findViewById<TextView>(R.id.tv_Event_Desc)
-        val comicEventRecyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewComicEvent)
+        val comicEventRecyclerView: RecyclerView = view.findViewById(R.id.recyclerViewComicEvent)
 
-        val recyclerViewEventsAdapter = EventRecyclerViewAdapter(clickListener)
+        val recyclerViewEventsAdapter = ComicsEventsAdapter()
         val titleComic = view3.tv_event_comic_title
-        fun bind(data: ResultsEvent, data2: Items) {
-            title.text = data.title
-            eventDesc.text = data.modified
-            titleComic.text = data2.name
-            var url = data.thumbnail.path.replace("http", "https") + "/standard_fantastic.jpg"
+        fun bind(data: ResultsEvent/*, data2: Items*/) {
+
+
+            val url = data.thumbnail.path.replace("http", "https") + "/standard_fantastic.jpg"
             Picasso.get()
                 .load(url)
                 .error(R.drawable.empty_imagenew)
                 .into(imageEventThumb)
-            if (data2.name != null) {
+
                 comicEventRecyclerView.apply {
                     layoutManager =
                         LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                     val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
                     addItemDecoration(decoration)
-                    val recyclerViewAdapter = EventRecyclerViewAdapter(clickListener)
-                    recyclerViewAdapter.items2 = data.comics.items.toMutableList()
-                    adapter = recyclerViewAdapter
-
+                    val recyclerViewComicsAdapter = ComicsEventsAdapter()
+                    //recyclerViewAdapter.items2 = data.comics.items.toMutableList()
+                    recyclerViewComicsAdapter.comicsList = data.comics.items as ArrayList<Items>
+                    adapter = recyclerViewComicsAdapter
                 }
-
-            }
         }
     }
+
+
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -77,12 +78,7 @@ class EventRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
         return items.size
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(items[position], items2[position])
-        holder.itemView.expandBtn.setOnClickListener {
-            clickListener.onItemClickListener(items[position])//(items.get(position))
-        }
-    }
+
 
     interface OnRecyclerItemClick {
         fun onItemClickListener(data: ResultsEvent)

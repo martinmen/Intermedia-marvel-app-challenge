@@ -1,5 +1,6 @@
 package ar.com.unlam.marvel_app.view.ui.fragments
 
+import Items
 import ResultsEvent
 import android.content.Intent
 import android.os.Bundle
@@ -83,13 +84,10 @@ class EventsFragment : Fragment()  , EventRecyclerViewAdapter.OnRecyclerItemClic
 
     override fun onItemClickListener(data: ResultsEvent) {
         val intent = Intent(this.context, DetailCharacterActivity::class.java)
-        intent.putExtra("name", data.title)
-        intent.putExtra("description", data.description)
-        intent.putExtra("image", data.thumbnail.path)
-        intent.putExtra("extension", data.thumbnail.extension)
-        intent.putExtra("comics", data.comics)
-       // startActivity(intent)
+
     }
+
+
 
 
 }

@@ -27,10 +27,11 @@
                 android:id="@+id/imageEventThumb"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.023"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.16" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tvEventTitle"
@@ -67,7 +68,7 @@
                 android:id="@+id/textViewCommicDiscuss"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="116dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/comics_to_discuss"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -76,7 +77,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/imageEventThumb" />
 
             <Button
                 android:id="@+id/expandBtn"
@@ -93,9 +94,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewComicEvent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
+                android:layout_marginTop="8dp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewCommicDiscuss"
                 tools:listitem="@layout/event_comic_list_recycler_view_row" />

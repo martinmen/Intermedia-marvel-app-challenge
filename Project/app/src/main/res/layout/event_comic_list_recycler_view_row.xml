@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:text="Evento 1"
+            android:text="Comic 1"
             android:textColor="@color/design_default_color_on_secondary"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,8 +34,6 @@
             android:text="1234"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_event_comic_title" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
