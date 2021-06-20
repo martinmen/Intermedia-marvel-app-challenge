@@ -9,7 +9,6 @@
         android:id="@+id/event_comic_list_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/event_comic_list_recycler_view_row"
-      />
+        tools:listitem="@layout/event_comic_list_recycler_view_row" />
 
 </FrameLayout>

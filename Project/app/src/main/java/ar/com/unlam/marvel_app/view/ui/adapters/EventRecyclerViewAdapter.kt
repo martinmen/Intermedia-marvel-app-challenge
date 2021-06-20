@@ -34,29 +34,30 @@ class EventRecyclerViewAdapter(val clickListener: OnRecyclerItemClick) :
         val imageEventThumb = view.findViewById<ImageView>(R.id.imageEventThumb)
         val title = view.findViewById<TextView>(R.id.tvEventTitle)
         val eventDesc = view.findViewById<TextView>(R.id.tv_Event_Desc)
-        val comicEventRecyclerView: RecyclerView = view.findViewById(R.id.recyclerViewComicEvent)
-
+       // val comicEventRecyclerView: RecyclerView = view.findViewById(R.id.recyclerViewComicEvent)
+       val comicEventRecyclerView= view.recyclerViewComicEvent
         val recyclerViewEventsAdapter = ComicsEventsAdapter()
         val titleComic = view3.tv_event_comic_title
-        fun bind(data: ResultsEvent/*, data2: Items*/) {
+        fun bind(data: ResultsEvent) {
 
-
+            title.text = data.title
+            eventDesc.text = data.modified
             val url = data.thumbnail.path.replace("http", "https") + "/standard_fantastic.jpg"
             Picasso.get()
                 .load(url)
                 .error(R.drawable.empty_imagenew)
                 .into(imageEventThumb)
-
+                  //  if(data.comics.items.isNotEmpty()){
                 comicEventRecyclerView.apply {
-                    layoutManager =
-                        LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                    val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-                    addItemDecoration(decoration)
+                    layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                    //val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL, false)
+                   // addItemDecoration(decoration)
                     val recyclerViewComicsAdapter = ComicsEventsAdapter()
                     //recyclerViewAdapter.items2 = data.comics.items.toMutableList()
                     recyclerViewComicsAdapter.comicsList = data.comics.items as ArrayList<Items>
                     adapter = recyclerViewComicsAdapter
                 }
+
         }
     }
 
