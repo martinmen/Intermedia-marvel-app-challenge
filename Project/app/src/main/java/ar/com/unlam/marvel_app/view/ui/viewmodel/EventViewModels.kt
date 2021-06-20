@@ -11,8 +11,8 @@ import kotlinx.coroutines.launch
 
 class EventViewModels:ViewModel() {
 
-    var _listaEventos = MutableLiveData<List<BaseMarvelEventsResponse>>()
-    val eventos = MutableLiveData<BaseMarvelEventsResponse>()
+/*    var _listaEventos = MutableLiveData<List<BaseMarvelEventsResponse>>()
+    val eventos = MutableLiveData<BaseMarvelEventsResponse>()*/
     val listaEventos = MutableLiveData<List<ResultsEvent>>()
     val status = MutableLiveData<Status>()
 

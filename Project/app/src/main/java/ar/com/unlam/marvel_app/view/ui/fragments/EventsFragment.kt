@@ -3,6 +3,7 @@ package ar.com.unlam.marvel_app.view.ui.fragments
 import Items
 import ResultsEvent
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
@@ -33,17 +34,6 @@ class EventsFragment : Fragment()  , EventRecyclerViewAdapter.OnRecyclerItemClic
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.event_list_recycler_view, container, false)
-/*        expandBtn.setOnClickListener {
-            if (recyclerViewComicEvent.visibility == View.GONE) {
-                TransitionManager.beginDelayedTransition(cardEventComicRow, AutoTransition())
-                recyclerViewComicEvent.visibility = View.VISIBLE
-                expandBtn.text = "COLLAPSE"
-            } else {
-                TransitionManager.beginDelayedTransition(cardEventComicRow, AutoTransition())
-                recyclerViewComicEvent.visibility = View.GONE
-                expandBtn.text = "EXPAND"
-            }
-        }*/
         initViewModel(view)
         initViewModel()
         return view
@@ -83,11 +73,9 @@ class EventsFragment : Fragment()  , EventRecyclerViewAdapter.OnRecyclerItemClic
     }
 
     override fun onItemClickListener(data: ResultsEvent) {
-        val intent = Intent(this.context, DetailCharacterActivity::class.java)
+        Toast.makeText(this.context,"item: "+ data.title,Toast.LENGTH_SHORT).show()
 
     }
-
-
 
 
 }

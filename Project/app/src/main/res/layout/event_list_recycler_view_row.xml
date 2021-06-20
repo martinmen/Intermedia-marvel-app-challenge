@@ -21,17 +21,18 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageEventThumb"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="4dp"
+                android:layout_margin="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.023"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
             <TextView
                 android:id="@+id/tvEventTitle"
@@ -43,26 +44,24 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.04"
+                app:layout_constraintHorizontal_bias="0.172"
                 app:layout_constraintStart_toEndOf="@+id/imageEventThumb"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.054" />
+                app:layout_constraintTop_toTopOf="@+id/imageEventThumb"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/tv_Event_Desc"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_width="149dp"
+                android:layout_height="19dp"
+                android:layout_marginTop="8dp"
                 android:maxLines="3"
                 android:text="Event date"
                 android:textColor="@color/black"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/tvEventTitle"
-                app:layout_constraintTop_toBottomOf="@+id/tvEventTitle"
-                app:layout_constraintVertical_bias="0.017" />
-
+                app:layout_constraintTop_toBottomOf="@+id/tvEventTitle" />
 
             <TextView
                 android:id="@+id/textViewCommicDiscuss"
@@ -73,21 +72,21 @@
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageEventThumb" />
 
-            <Button
+            <ImageView
                 android:id="@+id/expandBtn"
                 android:layout_width="40dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="44dp"
                 android:background="@drawable/ic_black_arrow_down_24"
                 android:textColor="#6200EA"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.986"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -96,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginTop="8dp"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"

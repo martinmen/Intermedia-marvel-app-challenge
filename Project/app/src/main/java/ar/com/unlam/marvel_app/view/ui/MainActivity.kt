@@ -50,11 +50,4 @@ class MainActivity : AppCompatActivity() {
         startActivity(mainIntent)
     }
 
-    /*private fun setupFragment() {
-        val fragment  = HeroesFragment.newInstance()
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(android.R.id.content, fragment)
-        fragmentTransaction.commit()
-    }*/
 }
