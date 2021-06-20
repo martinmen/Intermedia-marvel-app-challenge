@@ -1,7 +1,6 @@
 package ar.com.unlam.marvel_app.view.ui.viewmodel
 
-import BaseMarvelEventsResponse
-import ResultsEvent
+import ar.com.unlam.marvel_app.data.model.apiModel.ResultsEvent
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,8 +10,8 @@ import kotlinx.coroutines.launch
 
 class EventViewModels:ViewModel() {
 
-/*    var _listaEventos = MutableLiveData<List<BaseMarvelEventsResponse>>()
-    val eventos = MutableLiveData<BaseMarvelEventsResponse>()*/
+/*    var _listaEventos = MutableLiveData<List<ar.com.unlam.marvel_app.data.model.apiCharacterModel.BaseMarvelEventsResponse>>()
+    val eventos = MutableLiveData<ar.com.unlam.marvel_app.data.model.apiCharacterModel.BaseMarvelEventsResponse>()*/
     val listaEventos = MutableLiveData<List<ResultsEvent>>()
     val status = MutableLiveData<Status>()
 

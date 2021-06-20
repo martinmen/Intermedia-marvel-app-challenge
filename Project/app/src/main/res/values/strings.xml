@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">Marvel-App</string>
+    <string name="app_name">Marvel Challenge</string>
     <string name="emailInputHint">Email</string>
     <string name="passwordInputHint">Password</string>
     <string name="loginButton">LOGIN</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="informacion_detallada_del_personaje">Informacion detallada del personaje</string>
     <string name="appears_in_these_comics">APPEARS IN THESE COMICS</string>
@@ -11,4 +10,17 @@
 
     <string name="user_login">USERLOGIN</string>
     <string name="comics_to_discuss">COMICS TO DISCUSS</string>
+    <string name="m_login">M</string>
+    <string name="marvel_challenge_title_login">Marvel Challenge</string>
+    <string name="no_comics_to_discuss">NO COMICS TO DISCUSS</string>
+    <string name="characterNavBar">Characters</string>
+    <string name="eventNavBar">Events</string>
+    <string name="err_gettin_data">Error in getting data!</string>
+
+    <string name="err_mail_pass">The combination of Email and Password is not correct. Please retry</string>
+    <string name="err_mail_pass_incompleted">Email and password must be completed</string>
+    <string name="err_authen_alert">"There was an error in user's authentication"</string>
+    <string name="err_face">"Available soom"</string>
+
+
 </resources>

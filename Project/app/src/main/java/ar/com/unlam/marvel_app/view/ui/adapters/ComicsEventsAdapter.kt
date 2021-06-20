@@ -27,10 +27,10 @@ class ComicsEventsAdapter : RecyclerView.Adapter<ComicsEventsAdapter.ViewHolder>
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        //holder.bind(comicsList[position])
-        comicsList[position].let { article ->
+        comicsList[position].let { comic ->
             holder.itemView.tv_event_comic_title.text = comicsList[position].name
-            holder.itemView.tv_event_comic_anio.text = comicsList[position].resourceURI
+            var anioRandom = (1970..2020).random() //Parche provisorio, proximamente se traera la fechas.
+            holder.itemView.tv_event_comic_anio.text =anioRandom.toString()// comicsList[position].resourceURI
         }
 
     }

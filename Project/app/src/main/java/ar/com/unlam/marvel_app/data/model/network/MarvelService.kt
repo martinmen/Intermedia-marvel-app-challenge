@@ -1,7 +1,7 @@
 package ar.com.unlam.marvel_app.data.model.network
 
 import BaseMarvelCharactersResponse
-import BaseMarvelEventsResponse
+import ar.com.unlam.marvel_app.data.model.apiModel.BaseMarvelEventsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

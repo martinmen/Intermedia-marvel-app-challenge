@@ -34,7 +34,7 @@
 
             <TextView
                 android:id="@+id/heroName"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:text="Nombre de heroe"
                 android:textColor="@color/black"
@@ -42,16 +42,15 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.14"
+                app:layout_constraintHorizontal_bias="0.736"
                 app:layout_constraintStart_toEndOf="@+id/imageThumb"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.172" />
+                app:layout_constraintVertical_bias="0.173" />
 
             <TextView
                 android:id="@+id/heroDesc"
                 android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:maxLines="3"
+                android:layout_height="20dp"
                 android:text="Informacion del heroe"
                 android:textColor="@color/black"
                 android:textSize="14sp"

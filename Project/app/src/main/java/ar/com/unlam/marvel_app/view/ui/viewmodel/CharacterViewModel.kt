@@ -10,7 +10,6 @@ import BaseMarvelCharactersResponse
 import kotlinx.coroutines.launch
 
 class CharacterViewModel:ViewModel(){
-    var _charactersListLiveData = MutableLiveData<List<BaseMarvelCharactersResponse>>()
     val characters = MutableLiveData<BaseMarvelCharactersResponse>()
     val listaPersonajes = MutableLiveData<List<ResultsCharacters>>()
     val status = MutableLiveData<Status>()
@@ -27,13 +26,11 @@ class CharacterViewModel:ViewModel(){
         return listaPersonajes
     }
 
-    fun getHerores() {
+    fun getCharacters() {
         viewModelScope.launch {
             try {
                 val servicio = MarvelServiceImpl()
                 listaPersonajes.value =  servicio.getHeroes().data.results
-                Log.d(" characters.value", listaPersonajes.value.toString())
-              //  _charactersListLiveData.value = charactersRepository.getHeroes(1,15)
                 status.value = Status.SUCCES
             } catch (e: Exception) {
                 status.value = Status.ERROR

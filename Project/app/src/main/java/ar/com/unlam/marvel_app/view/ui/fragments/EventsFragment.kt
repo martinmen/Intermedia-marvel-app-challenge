@@ -1,12 +1,8 @@
 package ar.com.unlam.marvel_app.view.ui.fragments
 
-import Items
-import ResultsEvent
-import android.content.Intent
-import android.graphics.drawable.Drawable
+import ar.com.unlam.marvel_app.data.model.apiModel.ResultsEvent
 import android.os.Bundle
-import android.transition.AutoTransition
-import android.transition.TransitionManager
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,12 +14,12 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ar.com.unlam.marvel_app.R
-import ar.com.unlam.marvel_app.view.ui.DetailCharacterActivity
-import ar.com.unlam.marvel_app.view.ui.adapters.CharacterRecyclerViewAdapter
 import ar.com.unlam.marvel_app.view.ui.adapters.EventRecyclerViewAdapter
-import ar.com.unlam.marvel_app.view.ui.viewmodel.CharacterViewModel
 import ar.com.unlam.marvel_app.view.ui.viewmodel.EventViewModels
 import kotlinx.android.synthetic.main.event_list_recycler_view_row.*
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class EventsFragment : Fragment()  , EventRecyclerViewAdapter.OnRecyclerItemClick {
@@ -51,6 +47,15 @@ class EventsFragment : Fragment()  , EventRecyclerViewAdapter.OnRecyclerItemClic
             adapter = recyclerAdapter
         }
     }
+    private fun Date.dateToString(format: String): String {
+        //simple date formatter
+        val dateFormatter = SimpleDateFormat(format, Locale.getDefault())
+
+        //return the formatted date string
+        return dateFormatter.format(this)
+    }
+
+
 
     fun initViewModel() {
         val viewModel = ViewModelProvider(this).get(EventViewModels::class.java)
@@ -60,7 +65,7 @@ class EventsFragment : Fragment()  , EventRecyclerViewAdapter.OnRecyclerItemClic
                 recyclerAdapter.items2= it[0].comics.items.toMutableList()
                 recyclerAdapter.notifyDataSetChanged()
             } else {
-                Toast.makeText(activity, "Error in getting data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.err_gettin_data), Toast.LENGTH_SHORT).show()
             }
         })
         viewModel.getEvents()

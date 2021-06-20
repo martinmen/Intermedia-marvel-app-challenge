@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -15,29 +17,29 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        setup()
+        setListerners()
         session()
     }
 
-    override fun onStart() {
-        super.onStart()
-        loginLayout.visibility = View.VISIBLE
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menudetail, menu)
+        menu?.findItem(R.id.logOut)?.setVisible(false)
+        return super.onCreateOptionsMenu(menu)
     }
+
 
     private fun session() {
         val pref = getSharedPreferences(getString(R.string.user_login), Context.MODE_PRIVATE)
-        val email = pref.getString("email",null)
-
-        if (email!=null){
+        val email = pref.getString("email", null)
+        if (email != null) {
             loginLayout.visibility = View.INVISIBLE
-        goMainActivity(email)
+            goMainActivity(email)
             finish()
         }
 
     }
 
-    private fun setup() {
-        title = "Authenticacion"
+    private fun setListerners() {
         buttonRegistrar.setOnClickListener {
 
             if (et_TextEmailAddress.text.isNotEmpty() && et_TextPassword.text.isNotEmpty()) {
@@ -55,9 +57,9 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(
                     this,
-                    "Los campos email y contraseña deben ser completados",
+                    getString(R.string.err_mail_pass_incompleted),
                     Toast.LENGTH_SHORT
-                )
+                ).show()
             }
 
         }
@@ -72,19 +74,32 @@ class LoginActivity : AppCompatActivity() {
                     if (it.isSuccessful) {
                         goMainActivity(it.result?.user?.email.toString() ?: "")
                     } else {
-                        showAlert()
+                        Toast.makeText(
+                            this,
+                            getString(R.string.err_mail_pass),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
 
             } else {
                 Toast.makeText(
                     this,
-                    "Los campos email y contraseña deben ser completados",
+                    getString(R.string.err_mail_pass_incompleted),
                     Toast.LENGTH_SHORT
-                )
+                ).show()
 
             }
 
+        }
+
+        buttonRegistrarFacebook.setOnClickListener {
+
+            Toast.makeText(
+                this,
+                getString(R.string.err_face),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -100,8 +115,8 @@ class LoginActivity : AppCompatActivity() {
     private fun showAlert() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
-        builder.setMessage("Se ha producido un error en la authenticacion de usuario")
-        builder.setPositiveButton("Aceptar", null)
+        builder.setMessage(getString(R.string.err_authen_alert))
+        builder.setPositiveButton("Acept", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }

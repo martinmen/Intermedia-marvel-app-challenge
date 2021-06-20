@@ -1,4 +1,4 @@
-
+package ar.com.unlam.marvel_app.data.model.apiModel
 data class DataEvents (
 
 	val offset : Int,

@@ -9,12 +9,12 @@ import ar.com.unlam.marvel_app.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.character_list_appear_recycler_view_row.view.*
 
-class ComicsDetailsCharacterAdapter : RecyclerView.Adapter<ComicsDetailsCharacterAdapter.ViewHolder>()
-{
-        var comicsList = ArrayList<Items>()
+class ComicsDetailsCharacterAdapter :
+    RecyclerView.Adapter<ComicsDetailsCharacterAdapter.ViewHolder>() {
+    var comicsList = ArrayList<Items>()
 
-        class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        }
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater
@@ -26,11 +26,12 @@ class ComicsDetailsCharacterAdapter : RecyclerView.Adapter<ComicsDetailsCharacte
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         comicsList[position].let { article ->
             holder.itemView.tv_event_name.text = comicsList[position].name
-
+            val anioRandom = (1970..2020).random() //Parche provisorio, proximamente se traera la fechas.
+            holder.itemView.tv_event_anio.text = anioRandom.toString()  //comicsList[position].resourceURI
         }
     }
 
     override fun getItemCount(): Int {
-return comicsList.size
+        return comicsList.size
     }
 }

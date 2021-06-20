@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import ar.com.unlam.marvel_app.R
 import ar.com.unlam.marvel_app.view.ui.adapters.ViewPagerAdapter
 import ar.com.unlam.marvel_app.databinding.ActivityMainBinding
@@ -25,14 +27,27 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpTabs()
-        //setupFragment()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menudetail,menu)
+        menu?.findItem(R.id.back)?.setVisible(false)
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.logOut  -> {
+                logOut()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+
+    }
     private fun setUpTabs() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
 
-        adapter.addFragment(CharactersFragment(), "Characters")
-        adapter.addFragment(EventsFragment(), "Events")
+        adapter.addFragment(CharactersFragment(), getString(R.string.characterNavBar))
+        adapter.addFragment(EventsFragment(), getString(R.string.eventNavBar))
         binding.viewPager.adapter = adapter
         binding.tabs.setupWithViewPager(binding.viewPager)
         binding.tabs.getTabAt(0)!!.setIcon(R.drawable.ic_superhero)

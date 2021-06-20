@@ -36,7 +36,7 @@
 
             <TextView
                 android:id="@+id/tvEventTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="Event name"
                 android:textColor="@color/black"
@@ -64,6 +64,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvEventTitle" />
 
             <TextView
+                android:id="@+id/textViewNoCommicDiscuss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/no_comics_to_discuss"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageEventThumb" />
+
+            <TextView
                 android:id="@+id/textViewCommicDiscuss"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,12 +93,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageEventThumb" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/expandBtn"
                 android:layout_width="40dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="44dp"
                 android:background="@drawable/ic_black_arrow_down_24"
+                android:rotation="0
+"
                 android:textColor="#6200EA"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.986"

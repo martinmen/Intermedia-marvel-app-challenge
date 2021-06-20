@@ -36,11 +36,6 @@ class CharactersFragment : Fragment(), CharacterRecyclerViewAdapter.OnRecyclerIt
     private fun initViewModel(view: View) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewCharacters)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        // val decortion = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
-        //recyclerView.addItemDecoration(decortion)
-        // recyclerAdapter = HeroRecyclerViewAdapter(this)
-        // recyclerView.adapter = recyclerAdapter
-
         recyclerView.apply {
             layoutManager = LinearLayoutManager(this@CharactersFragment.context)
             val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
@@ -58,10 +53,10 @@ class CharactersFragment : Fragment(), CharacterRecyclerViewAdapter.OnRecyclerIt
                 recyclerAdapter.submitList(it)
                 recyclerAdapter.notifyDataSetChanged()
             } else {
-                Toast.makeText(activity, "Error in getting data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.err_gettin_data), Toast.LENGTH_SHORT).show()
             }
         })
-        viewModel.getHerores()
+        viewModel.getCharacters()
     }
 
     companion object {
